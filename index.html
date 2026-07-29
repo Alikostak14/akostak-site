@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Kostak | Security Researcher & Bug Hunter</title>
-    <meta name="description" content="Vulnerability Research, Web Security & Bug Bounty Write-ups">
+    <title>Ali Kostak | Vulnerability Researcher & Bug Bounty Hunter</title>
+    <meta name="description" content="Ali Kostak - Vulnerability Researcher & Bug Bounty Hunter. Web Security, Logic Flaws, Auth/AuthZ & Penetration Testing.">
     
     <!-- Google Fonts: JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -36,7 +36,7 @@
 
         header {
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+            padding-bottom: 25px;
             margin-bottom: 30px;
         }
 
@@ -52,14 +52,15 @@
         .yellow { background-color: #ffbd2e; }
         .green { background-color: #27c93f; }
 
-        h1 { color: #fff; font-size: 1.8rem; margin-bottom: 5px; }
-        .subtitle { color: var(--prompt-color); font-size: 0.95rem; }
-        .bio { margin-top: 15px; color: #8b949e; font-size: 0.9rem; }
+        h1 { color: #fff; font-size: 1.9rem; margin-bottom: 5px; }
+        .title-tag { color: var(--green-accent); font-weight: bold; }
+        .subtitle { color: var(--prompt-color); font-size: 0.95rem; margin-top: 5px; }
+        .bio { margin-top: 15px; color: #8b949e; font-size: 0.92rem; }
 
         .social-links {
-            margin-top: 15px;
+            margin-top: 20px;
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -68,21 +69,23 @@
             text-decoration: none;
             font-size: 0.85rem;
             border: 1px solid var(--border-color);
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 6px;
             transition: all 0.2s ease;
+            background-color: rgba(22, 27, 34, 0.5);
         }
 
         .social-links a:hover {
             border-color: var(--accent-color);
-            background-color: rgba(47, 129, 247, 0.1);
+            background-color: rgba(47, 129, 247, 0.15);
+            transform: translateY(-1px);
         }
 
         section { margin-bottom: 40px; }
 
         h2 {
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             border-bottom: 1px dashed var(--border-color);
             padding-bottom: 8px;
             margin-bottom: 20px;
@@ -93,13 +96,37 @@
 
         h2::before { content: ">"; color: var(--green-accent); }
 
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .skill-card h3 {
+            color: var(--prompt-color);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+
         .writeup-list { display: flex; flex-direction: column; gap: 15px; }
 
         .writeup-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 15px 20px;
+            padding: 18px;
             transition: transform 0.2s, border-color 0.2s;
         }
 
@@ -110,28 +137,35 @@
 
         .writeup-title {
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-decoration: none;
             font-weight: bold;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .writeup-meta {
             font-size: 0.8rem;
             color: #8b949e;
             display: flex;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
             margin-bottom: 10px;
         }
 
         .badge {
-            background-color: rgba(63, 185, 80, 0.15);
+            background-color: rgba(63, 185, 80, 0.12);
             color: var(--green-accent);
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 0.75rem;
-            border: 1px solid rgba(63, 185, 80, 0.3);
+            border: 1px solid rgba(63, 185, 80, 0.25);
+        }
+
+        .badge.h1 {
+            background-color: rgba(240, 136, 62, 0.12);
+            color: var(--prompt-color);
+            border-color: rgba(240, 136, 62, 0.25);
         }
 
         .writeup-desc { font-size: 0.88rem; color: var(--text-color); }
@@ -155,47 +189,66 @@
             <span style="color: #8b949e; font-size: 0.8rem; margin-left: 10px;">akostak@sec-researcher:~# whoami</span>
         </div>
         <h1>Ali Kostak</h1>
-        <div class="subtitle">$ ./init_profile.sh --role "Vulnerability Researcher / Bug Bounty Hunter"</div>
+        <div class="subtitle">$ <span class="title-tag">Vulnerability Researcher & Bug Bounty Hunter</span></div>
+        
         <p class="bio">
-            Web & uygulama güvenliği araştırmacısı. Business logic hataları, yetkilendirme (AuthZ/AuthN) zafiyetleri ve zafiyet analizleri üzerine odaklanıyorum.
+            Independent security researcher specializing in web application security, business logic flaws, authentication/authorization bypasses, and penetration testing. Actively hunting on Bug Bounty platforms and sharing research.
         </p>
         
         <div class="social-links">
+            <a href="https://linkedin.com/in/ali-kostak-83356b217" target="_blank">LinkedIn</a>
             <a href="https://hackerone.com/akostak" target="_blank">HackerOne</a>
             <a href="https://github.com/Alikostak14/" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/ali-kostak-83356b217" target="_blank">LinkedIn</a>
             <a href="https://medium.com/@akostak" target="_blank">Medium</a>
         </div>
     </header>
 
     <main>
         <section>
-            <h2>Write-Ups & Araştırmalar</h2>
+            <h2>Technical Focus & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Web Application Security</h3>
+                    <p>OWASP Top 10, Business Logic Flaws, IDOR, Authentication & Authorization Bypass, CSRF, XSS.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Security Tooling</h3>
+                    <p>Burp Suite Professional, sqlmap, Nmap, Wireshark, Custom Python Scripting.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Labs & Environments</h3>
+                    <p>Active Directory Lab Environments, VirtualBox, Purple Team Network Breach Simulations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Featured Security Reports & Research</h2>
             <div class="writeup-list">
 
-                <!-- Örnek Writeup 1 -->
+                <!-- Report 1 -->
                 <article class="writeup-card">
-                    <a href="#" class="writeup-title">Web Application Business Logic Vulnerability</a>
+                    <a href="https://hackerone.com/reports/2718253" target="_blank" class="writeup-title">Web Application Business Logic Vulnerability (HackerOne #2718253)</a>
                     <div class="writeup-meta">
-                        <span>📅 2026</span>
-                        <span class="badge">HackerOne</span>
+                        <span class="badge h1">HackerOne Report</span>
                         <span class="badge">Business Logic</span>
+                        <span class="badge">AuthZ / AuthN</span>
                     </div>
                     <p class="writeup-desc">
-                        İş mantığı zafiyetleri ve yetkilendirme bypass senaryoları üzerine detaylı zafiyet analizi.
+                        Disclosed business logic security vulnerability involving authentication/authorization flaws on HackerOne platform.
                     </p>
                 </article>
 
-                <!-- Örnek Writeup 2 -->
+                <!-- Research 2 -->
                 <article class="writeup-card">
-                    <a href="#" class="writeup-title">WP Core Pre-Auth RCE Analysis</a>
+                    <a href="https://medium.com/@akostak" target="_blank" class="writeup-title">WordPress Core Pre-Auth RCE Exploration & PoC Analysis</a>
                     <div class="writeup-meta">
-                        <span>📅 2026</span>
-                        <span class="badge">RCE</span>
+                        <span class="badge">CVE Research</span>
+                        <span class="badge">Pre-Auth RCE</span>
                         <span class="badge">WordPress</span>
                     </div>
                     <p class="writeup-desc">
-                        WordPress çekirdeğinde tespit edilen uzaktan kod çalıştırma zafiyetinin teknik incelemesi ve PoC analizi.
+                        Technical breakdown and research paper on WP core pre-authentication remote code execution vulnerabilities (CVE-2026-63030 & CVE-2026-60137).
                     </p>
                 </article>
 
@@ -204,7 +257,7 @@
     </main>
 
     <footer>
-        <p>[!] Tüm yazılar yetkili bildirimler ve yama süreçleri tamamlandıktan sonra yayınlanmaktadır.</p>
+        <p>© 2026 Ali Kostak — Authorized Security Testing & Responsible Disclosure Only.</p>
     </footer>
 
 </body>
