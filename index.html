@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Kostak | Security Researcher & Bug Hunter</title>
+    <meta name="description" content="Vulnerability Research, Web Security & Bug Bounty Write-ups">
+    
+    <!-- Google Fonts: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-color: #c9d1d9;
+            --accent-color: #2f81f7;
+            --green-accent: #3fb950;
+            --prompt-color: #f0883e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .red { background-color: #ff5f56; }
+        .yellow { background-color: #ffbd2e; }
+        .green { background-color: #27c93f; }
+
+        h1 { color: #fff; font-size: 1.8rem; margin-bottom: 5px; }
+        .subtitle { color: var(--prompt-color); font-size: 0.95rem; }
+        .bio { margin-top: 15px; color: #8b949e; font-size: 0.9rem; }
+
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(47, 129, 247, 0.1);
+        }
+
+        section { margin-bottom: 40px; }
+
+        h2 {
+            color: #fff;
+            font-size: 1.3rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2::before { content: ">"; color: var(--green-accent); }
+
+        .writeup-list { display: flex; flex-direction: column; gap: 15px; }
+
+        .writeup-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .writeup-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .writeup-title {
+            color: #fff;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .writeup-meta {
+            font-size: 0.8rem;
+            color: #8b949e;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            background-color: rgba(63, 185, 80, 0.15);
+            color: var(--green-accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(63, 185, 80, 0.3);
+        }
+
+        .writeup-desc { font-size: 0.88rem; color: var(--text-color); }
+
+        footer {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span style="color: #8b949e; font-size: 0.8rem; margin-left: 10px;">akostak@sec-researcher:~# whoami</span>
+        </div>
+        <h1>Ali Kostak</h1>
+        <div class="subtitle">$ ./init_profile.sh --role "Vulnerability Researcher / Bug Bounty Hunter"</div>
+        <p class="bio">
+            Web & uygulama güvenliği araştırmacısı. Business logic hataları, yetkilendirme (AuthZ/AuthN) zafiyetleri ve zafiyet analizleri üzerine odaklanıyorum.
+        </p>
+        
+        <div class="social-links">
+            <a href="https://hackerone.com/akostak" target="_blank">HackerOne</a>
+            <a href="https://github.com/Alikostak14/" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/ali-kostak-83356b217" target="_blank">LinkedIn</a>
+            <a href="https://medium.com/@akostak" target="_blank">Medium</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Write-Ups & Araştırmalar</h2>
+            <div class="writeup-list">
+
+                <!-- Örnek Writeup 1 -->
+                <article class="writeup-card">
+                    <a href="#" class="writeup-title">Web Application Business Logic Vulnerability</a>
+                    <div class="writeup-meta">
+                        <span>📅 2026</span>
+                        <span class="badge">HackerOne</span>
+                        <span class="badge">Business Logic</span>
+                    </div>
+                    <p class="writeup-desc">
+                        İş mantığı zafiyetleri ve yetkilendirme bypass senaryoları üzerine detaylı zafiyet analizi.
+                    </p>
+                </article>
+
+                <!-- Örnek Writeup 2 -->
+                <article class="writeup-card">
+                    <a href="#" class="writeup-title">WP Core Pre-Auth RCE Analysis</a>
+                    <div class="writeup-meta">
+                        <span>📅 2026</span>
+                        <span class="badge">RCE</span>
+                        <span class="badge">WordPress</span>
+                    </div>
+                    <p class="writeup-desc">
+                        WordPress çekirdeğinde tespit edilen uzaktan kod çalıştırma zafiyetinin teknik incelemesi ve PoC analizi.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>[!] Tüm yazılar yetkili bildirimler ve yama süreçleri tamamlandıktan sonra yayınlanmaktadır.</p>
+    </footer>
+
+</body>
+</html>
